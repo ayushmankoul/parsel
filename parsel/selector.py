@@ -39,7 +39,7 @@ def create_root_node(text, parser_cls, base_url=None):
     """Create root node for text using given parser class.
     """
     body = text.strip().encode('utf8') or b'<html/>'
-    parser = parser_cls(recover=True, encoding='utf8')
+    parser = parser_cls(recover=True, encoding='utf8',huge_tree=True)
     root = etree.fromstring(body, parser=parser, base_url=base_url)
     if root is None:
         root = etree.fromstring(b'<html/>', parser=parser, base_url=base_url)
